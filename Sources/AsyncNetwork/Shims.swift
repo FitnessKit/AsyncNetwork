@@ -30,8 +30,6 @@
     import Darwin
 #endif
 
-internal typealias as_dispatch_block_t = (Void)->Void
-
 
 public typealias Descriptor = Int32
 public typealias Port = UInt16

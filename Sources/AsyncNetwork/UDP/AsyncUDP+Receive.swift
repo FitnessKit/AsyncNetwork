@@ -29,6 +29,7 @@
     import Darwin
 #endif
 import Foundation
+import Dispatch
 
 public extension AsyncUDP {
 
@@ -38,7 +39,7 @@ public extension AsyncUDP {
     public func beginReceiving() throws {
         var errorCode: SocketError?
 
-        let block: as_dispatch_block_t = {
+        let block = DispatchWorkItem {
 
             if self.flags.contains(.receiveContinous) == false {
 
@@ -60,7 +61,7 @@ public extension AsyncUDP {
         }
 
         if isCurrentQueue == true {
-            block()
+            block.perform()
         } else {
             socketQueue.sync(execute: block)
         }
@@ -77,7 +78,7 @@ public extension AsyncUDP {
     public func receiveOnce() throws {
         var errorCode: SocketError?
 
-        let block: as_dispatch_block_t = {
+        let block = DispatchWorkItem {
 
             if self.flags.contains(.receiveContinous) == true {
                 errorCode = SocketError(.alreadyReceiving(msg: "Already Receiving Data.  Must pause prior to calling receiveOnce"))
@@ -104,7 +105,7 @@ public extension AsyncUDP {
         }
 
         if isCurrentQueue == true {
-            block()
+            block.perform()
         } else {
             socketQueue.sync(execute: block)
         }

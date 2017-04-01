@@ -63,7 +63,8 @@ internal class SockAddressStorage {
             val = UnsafePointer<sockaddr_in>(OpaquePointer(_rawStorage)).pointee.sin_port
         case .inet6:
             val = UnsafePointer<sockaddr_in6>(OpaquePointer(_rawStorage)).pointee.sin6_port
-        default: fatalError()
+        default:
+            fatalError()
         }
         return (val << 8) + (val >> 8)
 

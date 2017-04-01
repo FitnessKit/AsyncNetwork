@@ -8,7 +8,6 @@ class AsyncNetworkTests: XCTestCase {
     func testBadAddress() {
         let sock = AsyncUDP()
 
-
         do {
             let addr = InternetAddress.anyAddr(port: 5113, family: .inet)
             try sock.bind(address: addr)
@@ -58,7 +57,8 @@ class AsyncNetworkTests: XCTestCase {
     }
 
     func testReceive() {
-        //let expect: XCTestExpectation = expectation(description: "test")
+        let expect: XCTestExpectation = expectation(description: "test")
+        let stop: Bool = false
         let sock = AsyncUDP()
 
         let observer = UDPReceiveObserver(closeHandler: { (sock: AsyncUDP, error: SocketError?) in
@@ -68,7 +68,7 @@ class AsyncNetworkTests: XCTestCase {
         }, receiveHandler: { (sock: AsyncUDP, data: Data, address: InternetAddress) in
 
 //            let head = String(format: "%X%X", data[0], data[1])
-            let head = String(format: "%X%X", data[0], data[1])
+            let head = String(format: "%C%C", data[0], data[1])
             let flags = String(format: "%X%X", data[2], data[3])
 
             print("\n Data: \(data.debugDescription) Header: \(head) flags:\(flags) from: \(address.hostname) onPort:\(address.port)")
@@ -101,9 +101,9 @@ class AsyncNetworkTests: XCTestCase {
             
         }
 
-//        if stop == true {
-//            expect.fulfill()
-//        }
+        if stop == true {
+            expect.fulfill()
+        }
 
 
         waitForExpectations(timeout: 3234234236) { (error) -> Void in

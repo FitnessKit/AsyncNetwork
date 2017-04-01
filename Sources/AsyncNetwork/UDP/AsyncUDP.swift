@@ -138,7 +138,7 @@ public extension AsyncUDP {
     /// Close the Async UDP Connection
     public func close() {
 
-        let block: as_dispatch_block_t = {
+        let block = DispatchWorkItem {
 
             self.closeSocket()
         }
@@ -217,7 +217,7 @@ public extension AsyncUDP {
         
         var errorCode: SocketError?
 
-        let block: as_dispatch_block_t = {
+        let block = DispatchWorkItem {
 
             do {
                 //Do the Pre Bind Checks
@@ -256,7 +256,7 @@ public extension AsyncUDP {
 
 
         if isCurrentQueue == true {
-            block()
+            block.perform()
         }else {
             socketQueue.sync(execute: block)
         }

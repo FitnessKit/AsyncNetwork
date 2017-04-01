@@ -28,6 +28,7 @@
 #else
     import Darwin
 #endif
+import Dispatch
 
 //MARK: - Multicast
 public extension AsyncUDP {
@@ -40,7 +41,7 @@ public extension AsyncUDP {
 
         var errorCode: SocketError?
 
-        let block: as_dispatch_block_t = {
+        let block = DispatchWorkItem {
 
             do {
                 //Do the Pre Multicast Checks
@@ -80,7 +81,7 @@ public extension AsyncUDP {
         }
 
         if isCurrentQueue == true {
-            block()
+            block.perform()
         } else {
             socketQueue.sync(execute: block)
         }
@@ -100,7 +101,7 @@ public extension AsyncUDP {
     public func leave(group: MulticastGroup) throws {
         var errorCode: SocketError?
 
-        let block: as_dispatch_block_t = {
+        let block = DispatchWorkItem {
 
             //Cant Leave if never joined
             guard self.flags.contains(.multiCastJoined) != false else {
@@ -132,7 +133,7 @@ public extension AsyncUDP {
         }
 
         if isCurrentQueue == true {
-            block()
+            block.perform()
         } else {
             socketQueue.sync(execute: block)
         }
