@@ -63,7 +63,7 @@ class AsyncNetworkTests: XCTestCase {
 
         let observer = UDPReceiveObserver(closeHandler: { (sock: AsyncUDP, error: SocketError?) in
 
-            print("Socket did Close: \(error)")
+            print("Socket did Close: \(String(describing: error))")
 
         }, receiveHandler: { (sock: AsyncUDP, data: Data, address: InternetAddress) in
 
@@ -109,7 +109,7 @@ class AsyncNetworkTests: XCTestCase {
         waitForExpectations(timeout: 3234234236) { (error) -> Void in
 
             if (error != nil) {
-                XCTFail("Expectation Failed with error: \(error)");
+                XCTFail("Expectation Failed with error: \(String(describing: error))");
             }
             
         }

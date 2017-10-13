@@ -309,7 +309,7 @@ fileprivate extension AsyncUDP {
 
         let when = DispatchTime.now() + Double(Int64(timeout * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
 
-        sendTimer?.scheduleOneshot(deadline: when)
+        sendTimer?.schedule(deadline: when, repeating: .never)
 
         sendTimer!.resume();
 

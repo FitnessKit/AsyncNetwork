@@ -1,8 +1,25 @@
 # AsyncNetwork
 Asynchronous Network support for Swift.  UDP, Multicast UDP
 
+## Installation
 
-###Example Usage
+Swift Package Manager:
+
+Swift3
+```swift
+    dependencies: [
+        .Package(url: "https://github.com/FitnessKit/AsyncNetwork", majorVersion: 0)
+    ]
+```
+Swift4
+```swift
+    dependencies: [
+        .package(url: "https://github.com/FitnessKit/AsyncNetwork", from: "1.0.0"),
+    ]
+```
+
+
+### Example Usage
 
 ```
     let sock = AsyncUDP()
