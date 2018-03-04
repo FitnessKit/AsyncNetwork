@@ -29,6 +29,7 @@
     import Darwin
 #endif
 import Foundation
+import Dispatch
 
 public extension AsyncUDP {
 
@@ -307,7 +308,9 @@ fileprivate extension AsyncUDP {
             self.doSendTimout()
         }
 
-        let when = DispatchTime.now() + Double(Int64(timeout * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        let nsec = 1000000000
+//        let when = DispatchTime.now() + Double(Int64(timeout * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        let when = DispatchTime.now() + Double(Int64(timeout * Double(nsec))) / Double(nsec)
 
         sendTimer?.schedule(deadline: when, repeating: .never)
 

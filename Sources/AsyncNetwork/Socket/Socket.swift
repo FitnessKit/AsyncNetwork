@@ -52,11 +52,11 @@ public struct SocketReceiveOptions: OptionSet {
     /// NO Flags should be set
     public static let none: SocketReceiveOptions        = SocketReceiveOptions(rawValue: 0)
     /// Receive Out of Band Data
-    public static let outOfBand: SocketReceiveOptions   = SocketReceiveOptions(rawValue: MSG_OOB)
+    public static let outOfBand: SocketReceiveOptions   = SocketReceiveOptions(rawValue: Int32(MSG_OOB))
     /// Peek at the data.  Does not actually receive the data.. Just a preview
-    public static let peek: SocketReceiveOptions        = SocketReceiveOptions(rawValue: MSG_PEEK)
+    public static let peek: SocketReceiveOptions        = SocketReceiveOptions(rawValue: Int32(MSG_PEEK))
     /// Wait until all of the data is present
-    public static let waitAll: SocketReceiveOptions     = SocketReceiveOptions(rawValue: MSG_WAITALL)
+    public static let waitAll: SocketReceiveOptions     = SocketReceiveOptions(rawValue: Int32(MSG_WAITALL))
 }
 
 public struct SocketSendOptions: OptionSet {
@@ -66,9 +66,9 @@ public struct SocketSendOptions: OptionSet {
     /// NO Flags should be set
     public static let none: SocketSendOptions           = SocketSendOptions(rawValue: 0)
     /// Send Data as Out of Band
-    public static let outOfBand: SocketSendOptions      = SocketSendOptions(rawValue: MSG_OOB)
+    public static let outOfBand: SocketSendOptions      = SocketSendOptions(rawValue: Int32(MSG_OOB))
     /// Don't Route Message Over Router.  Keep on Local Network
-    public static let dontRoute: SocketSendOptions      = SocketSendOptions(rawValue: MSG_DONTROUTE)
+    public static let dontRoute: SocketSendOptions      = SocketSendOptions(rawValue: Int32(MSG_DONTROUTE))
 }
 
 public struct Socket {
