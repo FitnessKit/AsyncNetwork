@@ -107,7 +107,7 @@ internal class SockAddressStorage {
         }
 
         let testString = String(validatingUTF8: strData)
-        strData.deallocate(capacity: Int(maxLen))
+        strData.deallocate()
 
         guard let str = testString else {
             return "Invalid IP"

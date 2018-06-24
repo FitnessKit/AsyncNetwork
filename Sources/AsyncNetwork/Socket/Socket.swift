@@ -164,7 +164,7 @@ public extension Socket {
                                             &length)
         
         guard receivedBytes > -1 else {
-            addr.deallocate(capacity: 1)
+            addr.deallocate()
             throw SocketError(.readFailed)
         }
 
