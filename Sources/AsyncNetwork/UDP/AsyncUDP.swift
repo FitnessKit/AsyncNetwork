@@ -36,16 +36,16 @@ internal struct UdpSocketFlags: OptionSet {
     internal init(rawValue: Int) { self.rawValue = rawValue }
 
     /** If set, the sockets have been created. */
-    internal static let didCreateSockets: UdpSocketFlags        = UdpSocketFlags(rawValue: 1 << 0)
-    internal static let didBind: UdpSocketFlags                 = UdpSocketFlags(rawValue: 1 << 1)
-    internal static let didConnect: UdpSocketFlags              = UdpSocketFlags(rawValue: 1 << 2)
-    internal static let receiveOnce: UdpSocketFlags             = UdpSocketFlags(rawValue: 1 << 3)
-    internal static let receiveContinous: UdpSocketFlags        = UdpSocketFlags(rawValue: 1 << 4)
-    internal static let sendSourceSuspend: UdpSocketFlags       = UdpSocketFlags(rawValue: 1 << 5)
-    internal static let recvSourceSuspend: UdpSocketFlags       = UdpSocketFlags(rawValue: 1 << 6)
-    internal static let sockCanAccept: UdpSocketFlags           = UdpSocketFlags(rawValue: 1 << 7)
-    internal static let closeAfterSend: UdpSocketFlags          = UdpSocketFlags(rawValue: 1 << 8)
-    internal static let multiCastJoined: UdpSocketFlags         = UdpSocketFlags(rawValue: 1 << 9)
+    internal static let didCreateSockets        = UdpSocketFlags(rawValue: 1 << 0)
+    internal static let didBind                 = UdpSocketFlags(rawValue: 1 << 1)
+    internal static let didConnect              = UdpSocketFlags(rawValue: 1 << 2)
+    internal static let receiveOnce             = UdpSocketFlags(rawValue: 1 << 3)
+    internal static let receiveContinous        = UdpSocketFlags(rawValue: 1 << 4)
+    internal static let sendSourceSuspend       = UdpSocketFlags(rawValue: 1 << 5)
+    internal static let recvSourceSuspend       = UdpSocketFlags(rawValue: 1 << 6)
+    internal static let sockCanAccept           = UdpSocketFlags(rawValue: 1 << 7)
+    internal static let closeAfterSend          = UdpSocketFlags(rawValue: 1 << 8)
+    internal static let multiCastJoined         = UdpSocketFlags(rawValue: 1 << 9)
 
 }
 

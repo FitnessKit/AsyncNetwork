@@ -38,8 +38,8 @@ public struct SocketOptions: OptionSet {
     public init(rawValue: Int) { self.rawValue = rawValue }
 
     /** Reuse Port */
-    public static let reusePort: SocketOptions        = SocketOptions(rawValue: 1 << 0)
+    public static let reusePort        = SocketOptions(rawValue: 1 << 0)
     /** Enable Broadcast Messages on Socket */
-    public static let enableBroadcast: SocketOptions  = SocketOptions(rawValue: 1 << 1)
+    public static let enableBroadcast  = SocketOptions(rawValue: 1 << 1)
 
 }

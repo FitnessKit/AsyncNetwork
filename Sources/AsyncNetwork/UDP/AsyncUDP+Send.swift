@@ -69,13 +69,10 @@ public extension AsyncUDP {
 
         }
 
-
         self.socketQueue.async { () -> Void in
             self.sendQueue.append(sendPacket)
             self.maybeDequeueSend()
         }
-
-
     }
 
 }

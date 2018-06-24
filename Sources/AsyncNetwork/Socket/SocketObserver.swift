@@ -30,7 +30,6 @@
 #endif
 import Foundation
 
-
 public protocol SocketObserver {
 
     var uuid: UUID { get }
@@ -38,7 +37,6 @@ public protocol SocketObserver {
     func socketDidReceive(_ socket: AsyncUDP, data: Data, fromAddress: InternetAddress)
 
     func sockDidClose(_ socket: AsyncUDP, error: SocketError?)
-
 
     //Send Errors
     func socketDidNotSend(_ socket: AsyncUDP, tag: Int, error: SocketError)

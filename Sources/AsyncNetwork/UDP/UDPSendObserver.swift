@@ -43,7 +43,7 @@ public struct UDPSendObserver: SocketObserver {
     public init(
         didSend: ((_ socket: AsyncUDP, _ tag: Int) -> Void)? = nil,
         didNotSend: ((_ socket: AsyncUDP, _ tag: Int, _ error: SocketError) -> Void)? = nil,
-        onQueue: DispatchQueue = DispatchQueue.main
+        onQueue: DispatchQueue = DispatchQueue(label: UUID().uuidString)
         ) {
 
         self.didSendHandler = didSend

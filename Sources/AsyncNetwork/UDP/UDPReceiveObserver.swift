@@ -43,14 +43,13 @@ public struct UDPReceiveObserver: SocketObserver {
     public init(
         closeHandler: ((_ socket: AsyncUDP, _ error: SocketError?) -> Void)? = nil,
         receiveHandler: ((_ socket: AsyncUDP, _ data: Data, _ fromAddress: InternetAddress) -> Void)? = nil,
-        onQueue: DispatchQueue = DispatchQueue.main
+        onQueue: DispatchQueue = DispatchQueue(label: UUID().uuidString)
         ){
         self.closeHandler = closeHandler
         self.receiveHandler = receiveHandler
         self.dispatchQueue = onQueue
         self.uuid = UUID()
     }
-
 
     //MARK: - Observers
 
